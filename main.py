@@ -7,7 +7,6 @@ from commands.role_update import *
 from commands.reminder import *
 
 print("Starting up...")
-TOKEN = os.getenv('TOKEN')
 
 @client.event
 async def on_ready():

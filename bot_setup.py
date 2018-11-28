@@ -5,19 +5,20 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import os
 
-# Load Bot
-from dotenv import load_dotenv
-load_dotenv(verbose=True)
+TOKEN = os.environ['TOKEN']
+DBUSER = os.environ['DBUSER']
+DBPASS = os.environ['DBPASS']
+
+print(DBUSER)
+print(DBPASS)
 
 # Initialize Client
-client = commands.Bot(command_prefix='!')
+client = commands.Bot(command_prefix='$')
 
 # Initialize "database" and "users":
 #     database: object which connects to mysql database
 #     users: str[][] -> (user.id, user.name, user.channel)
 from server import database
-DBUSER = os.getenv('DBUSER')
-DBPASS = os.getenv('DBPASS')
 
 database = database.Database(
                             "h2cwrn74535xdazj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", # Host
