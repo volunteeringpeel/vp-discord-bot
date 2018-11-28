@@ -4,6 +4,7 @@
 from bot_setup import *
 from commands.random import *
 from commands.role_update import *
+from commands.reminder import *
 
 print("Starting up...")
 TOKEN = os.getenv('TOKEN')
