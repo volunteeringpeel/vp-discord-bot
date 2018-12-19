@@ -2,4 +2,8 @@
 .env
 __pycache__/*
 *.py[cod]
+<<<<<<< HEAD
 .idea/*
+=======
+.idea/
+>>>>>>> 40649b3bbda654b83b7a75665a23aa0973c32d1e
