@@ -1,14 +1,24 @@
-from bot_setup import client, TOKEN
+import discord, sys, traceback, os
+from discord.ext import commands
 
-print("Starting up...")
+# Get Token
+from dotenv import load_dotenv
+load_dotenv(verbose=True)
+TOKEN  = os.environ['TOKEN']
 
-@client.event
+# Initialize Bot
+bot = commands.Bot(command_prefix='!')
+initial_extensions = ['cogs.serverManagement']
+
+@bot.event
 async def on_ready():
-    print("Bot is online")
+    """http://discordpy.readthedocs.io/en/rewrite/api.html#discord.on_ready"""
 
-client.load_extension("cogs.random")
-client.load_extension("cogs.manage_roles")
-client.load_extension("cogs.role_update")
-client.load_extension("cogs.reminder")
+    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
 
-client.run(TOKEN)
+# Load extensions (cogs) listed above in [initial_extensions].
+if __name__ == '__main__':
+    for extension in initial_extensions:
+        bot.load_extension(extension)
+
+bot.run(TOKEN, bot=True, reconnect=True)
